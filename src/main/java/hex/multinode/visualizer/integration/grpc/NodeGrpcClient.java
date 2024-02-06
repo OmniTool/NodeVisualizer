@@ -21,7 +21,7 @@ public class NodeGrpcClient {
     public NodeDTO createNode(NodeDTO node) {
         CreateNodeRequest request = CreateNodeRequest.newBuilder()
                 .setTitle(node.title())
-                .setText(node.text())
+                .setText(node.contentText())
                 .build();
         CreateNodeResponse response = sendRequest(request, (stub) -> stub.createNode(request));
         return convertNodeProtoToDTO(response.getNode());

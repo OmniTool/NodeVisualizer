@@ -6,7 +6,7 @@ public record NodeDTO(
         String id,
         @NotBlank
         String title,
-        String text) {
+        String contentText) {
     public static NodeDTO of(String title, String text) {
         return new NodeDTO(null, title, text);
     }
