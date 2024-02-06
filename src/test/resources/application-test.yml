@@ -1,0 +1,33 @@
+server:
+  port: '8090'
+  error:
+    # Debug tool
+    include-message: always
+spring:
+  kafka:
+    consumer:
+      topic: multinode.edit.rq
+      group: multinode.edit.rq.group
+    enable-idempotence: 'true'
+    producer:
+      acks: '1'
+      producer:
+        batch-size: 10
+    bootstrap-servers: localhost:9092
+    retry:
+      topic:
+        # Retry attempts delay in seconds
+        attempts: 3
+        delay: 10
+        enabled: 'true'
+  cloud:
+    openfeign:
+      # PATCH method for openfeign
+      okhttp:
+        enabled: 'true'
+name:
+  service:
+    url: http://localhost:8090
+grpc:
+  server:
+    target: localhost:6565
